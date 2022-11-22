@@ -30,7 +30,7 @@ namespace UserRegistrationAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            var connectionString = "Server=localhost\\MSSQLSERVER01;Database=master;Trusted_Connection=True;";
+            var connectionString = "Server=localhost\\MSSQLSERVER01;Database=SoccerPredictionDB;Trusted_Connection=True;";
             services.AddScoped<IUserServices, UserServices>();
             services.AddDbContext<UserContext>(options => options.UseSqlServer(connectionString));
             services.AddControllers();

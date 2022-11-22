@@ -11,6 +11,7 @@ namespace UserRegistrationAPI.Context
         {
         }
 
-        public DbSet<User> UsersDB { get; set; }
+       
+        public DbSet<User> UserRegistrationDB { get; set; }
     }
 }

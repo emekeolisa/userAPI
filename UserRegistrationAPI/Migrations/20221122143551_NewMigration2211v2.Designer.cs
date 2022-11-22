@@ -10,8 +10,8 @@ using UserRegistrationAPI.Context;
 namespace UserRegistrationAPI.Migrations
 {
     [DbContext(typeof(UserContext))]
-    [Migration("20220420125831_Independent")]
-    partial class Independent
+    [Migration("20221122143551_NewMigration2211v2")]
+    partial class NewMigration2211v2
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -26,6 +26,9 @@ namespace UserRegistrationAPI.Migrations
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
 
+                    b.Property<string>("AccountNumber")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime>("CreateDate")
                         .HasColumnType("datetime2");
 
@@ -34,10 +37,6 @@ namespace UserRegistrationAPI.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("FirstName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Gender")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -52,8 +51,7 @@ namespace UserRegistrationAPI.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool>("Status")
-                        .HasColumnType("bit");
+                   
 
                     b.Property<string>("UserName")
                         .IsRequired()
@@ -61,7 +59,7 @@ namespace UserRegistrationAPI.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("UsersDB");
+                    b.ToTable("UserRegistrationDB");
                 });
 #pragma warning restore 612, 618
         }

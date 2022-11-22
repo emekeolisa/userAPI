@@ -25,14 +25,14 @@ namespace UserRegistrationAPI.Services
                 UserName = user.UserName,
                 Password = user.Password = BCrypt.Net.BCrypt.HashPassword(user.Password),
                 Email = user.Email,
-                Gender = user.Gender,
+                AccountNumber = user.AccountNumber,
                 CreateDate = user.CreateDate,
                 ModifyDate = user.ModifyDate,
-                Status = user.Status
+              
 
             };
 
-            db.UsersDB.Add(newUser);
+            db.UserRegistrationDB.Add(newUser);
             db.SaveChangesAsync();
             return user;
 
@@ -41,10 +41,10 @@ namespace UserRegistrationAPI.Services
         
         public void DeleteUser(string id)
         {
-            var user = db.UsersDB.SingleOrDefault(x => x.Id == id);
+            var user = db.UserRegistrationDB.SingleOrDefault(x => x.Id == id);
             if (user != null)
             {
-                db.UsersDB.Remove(user);
+                db.UserRegistrationDB.Remove(user);
                 db.SaveChanges();
             }
 
@@ -54,7 +54,7 @@ namespace UserRegistrationAPI.Services
         {
 
 
-            var loginUser = db.UsersDB.SingleOrDefault(x => x.UserName == UserName);
+            var loginUser = db.UserRegistrationDB.SingleOrDefault(x => x.UserName == UserName);
             Console.WriteLine(loginUser);
             bool isValid = BCrypt.Net.BCrypt.Verify(Password, loginUser.Password);
 
@@ -75,7 +75,7 @@ namespace UserRegistrationAPI.Services
 
         public IEnumerable<User> GetAllUsers()
         {
-            return (db.UsersDB.Select(u => u).ToList());
+            return db.UserRegistrationDB.Select(u => u).ToList();
         }
 
         public User GetUserByEmail(string email)
@@ -90,9 +90,11 @@ namespace UserRegistrationAPI.Services
 
         public User GetUserById(string id)
         {
-            var user = db.UsersDB.SingleOrDefault(x => x.Id == id);
+            var user = db.UserRegistrationDB.SingleOrDefault(x => x.Id == id);
             if (user != null)
+               
             {
+                
                 return user;
             }
 

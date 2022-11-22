@@ -17,12 +17,12 @@ namespace UserRegistrationAPI.Models
         [Required(ErrorMessage = "LastName is required")]
         public string? LastName { get; set; }
 
-        [Required(ErrorMessage = "UserName is required")]
-        [Remote("IsExist", "Place", ErrorMessage = "URL exist!")]
+       
+        [Remote("IsExist", "Place", ErrorMessage = "Username exist!")]
         public string? UserName { get; set; }
 
-        [Required(ErrorMessage = "Gender is required")]
-        public string? Gender { get; set; }
+       
+        public string? AccountNumber { get; set; }
 
         [Required]
         [RegularExpression("^[a-zA-Z0-9_\\.-]+@([a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$", ErrorMessage = "E-mail is not valid")]
@@ -37,7 +37,7 @@ namespace UserRegistrationAPI.Models
 
         public DateTime ModifyDate { get; set; } = DateTime.Now;
 
-        public bool Status { get; set; }
+   
 
     }
 

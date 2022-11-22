@@ -28,7 +28,7 @@ namespace UserRegistrationAPI.Controllers
         }
 
 
-        [HttpPost("AddUser")]
+        [HttpPost("Register")]
         public Task<User> Create(User user)
         {
             ius.AddUser(user);
